@@ -51,17 +51,14 @@ client.connect((err) => {
 
   app.post("/appointmentsByDate", (req, res) => {
     const date = req.body;
+    // const convertedDate =new Date(date.date).toLocaleDateString()
+    // console.log(convertedDate)
     console.log(date.date);
     appointmentCollection
       .find({ date: date.date })
       .toArray((err, documents) => {
         res.send(documents);
       });
-
-    // .then((result) => {
-    //   console.log("inserted Count", result);
-    //   res.send(result.insertedCount > 0);
-    // });
   });
 
   app.post('/addADoctor', (req, res) => {
